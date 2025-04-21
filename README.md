@@ -90,6 +90,7 @@ plt.xlabel('Hour of Day')
 plt.ylabel('Day of Week')
 plt.show()
 ```
+![Accident Heatmap by Day and Hour](assets/heat-map.png)
 
 *Interpretation: Late afternoons and evenings (16:00–19:00) show highest accident density, especially on weekdays.*
 
@@ -106,29 +107,9 @@ plt.ylabel('Number of Accidents')
 plt.legend(title='Severity')
 plt.show()
 ```
+![Age Distribution and Severity](assets/severity_by_ageband.png)
 
 *Interpretation: Under 18 and over 51 drivers have a higher proportion of severe/fatal accidents. These groups need targeted education and licensing scrutiny.*
-
----
-
-### 3. Feature Importance (from Model)
-
-```python
-# Suppose you have feature_importances_ and feature_names from your model
-import numpy as np
-importances = rf_pipeline.named_steps['classifier'].feature_importances_
-feature_names = [...]  # Fill with your actual feature names
-
-indices = np.argsort(importances)[::-1]
-plt.figure(figsize=(12, 6))
-plt.bar([feature_names[i] for i in indices[:10]], importances[indices[:10]])
-plt.title('Top 10 Feature Importances for Accident Severity')
-plt.ylabel('Importance')
-plt.xticks(rotation=45)
-plt.show()
-```
-
-*Interpretation: Number of vehicles involved, driver age, driving experience, and vehicle type are top predictors of accident severity.*
 
 ---
 
